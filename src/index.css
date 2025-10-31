@@ -80,3 +80,40 @@
   height: 100%;
   border-radius: 20px;
 }
+
+.search-contents {
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.search-input {
+  background-color: blanchedalmond;
+  color: black;
+  width: 200px;
+}
+
+.top-bit {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.search-button {
+  background-color: darkgoldenrod;
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+}
+
+.bottom-bit {
+  display: flex;
+  flex-direction: column;
+}
+
+.mapElement {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
