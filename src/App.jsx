@@ -68,28 +68,10 @@ const App = () => {
 
   useEffect(() => {
     const getBreweries = async () => {
-      const nameQuery = (breweryName || "").trim()
-      const cityQuery = (city || "").trim()
-
-      if (nameQuery === "" && cityQuery === "") {
-        await axios.get("https://api.openbrewerydb.org/v1/breweries/random?size=12")
-          .then(response => {
-            const breweriesFromResponse = response.data.map(brew => ({
-              id: brew.id,
-              name: brew.name,
-              city: brew.city,
-              country: brew.country
-            }));
-
-            setBreweries(breweriesFromResponse);
-          })
-        return
-      }
-
-      const byName = nameQuery.length > 0 ? `&by_name=${nameQuery.replace(/\s+/g, "_").toLowerCase()}` : ""
-      const byCity = cityQuery.length > 0 ? `&by_city=${cityQuery.replace(/\s+/g, "_").toLowerCase()}` : ""
-
-      await axios.get(`https://api.openbrewerydb.org/v1/breweries?per_page=12${byName}${byCity}`)
+      await axios.get((
+        ("https://api.openbrewerydb.org/v1/breweries?per_page=12") +
+        (breweryName.length > 0 ? `&by_name=${breweryName.replace(" ", "_").toLocaleLowerCase()}` : "")
+        + (city.length > 0 ? `&by_city=${city.replace(" ", "_").toLocaleLowerCase()}` : "")))
         .then(response => {
           const breweriesFromResponse = response.data.map(brew => ({
             id: brew.id,
@@ -101,7 +83,6 @@ const App = () => {
           setBreweries(breweriesFromResponse);
         })
     }
-
     getBreweries()
   }, [breweryName, city])
 
