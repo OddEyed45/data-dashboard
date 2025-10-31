@@ -19,7 +19,7 @@ const BreweryDisplay = (props) => {
 
                         <div className="bottom-bit">
                             {breweries.length > 0 ? (
-                                <table className="brewery-table" role="table">
+                                <table>
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
